@@ -18,7 +18,6 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var trailingContainerConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingContainerConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topContainerConstraint: NSLayoutConstraint!
     
     //MARK:-ViewLifeCycle
     override func viewDidLoad() {
@@ -33,7 +32,7 @@ class SideMenuViewController: UIViewController {
         let nib = UINib(nibName: SideMenuCell.identifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: SideMenuCell.identifier)
         let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(openMenuNotification(_:)), name: Notification.Name("openMenu"), object: nil)
+        center.addObserver(self, selector: #selector(openMenuNotification(_:)), name: .openMenu, object: nil)
     }
     
     private func toggleMenu(){
@@ -52,7 +51,6 @@ class SideMenuViewController: UIViewController {
         let value = view.frame.width - 150
         leadingContainerConstraint.constant = value
         trailingContainerConstraint.constant = -value
-        topContainerConstraint.constant = 0
         
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
@@ -64,8 +62,6 @@ class SideMenuViewController: UIViewController {
     private func closeMenu(){
         leadingContainerConstraint.constant = 0
         trailingContainerConstraint.constant = 0
-        
-        topContainerConstraint.constant = 0
         
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()

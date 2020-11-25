@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
     
     //MARK:-Actions
     @IBAction func openMenu(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name("openMenu"), object: nil)
-
+        NotificationCenter.default.post(name: .openMenu, object: nil)
     }
 }

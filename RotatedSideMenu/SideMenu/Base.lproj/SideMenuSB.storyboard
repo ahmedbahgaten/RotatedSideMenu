@@ -54,8 +54,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="o6B-jz-FGx" secondAttribute="bottom" id="Oic-bm-daJ"/>
                             <constraint firstItem="yNJ-gR-1Um" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.600242" id="VCa-d5-ygY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o6B-jz-FGx" secondAttribute="trailing" id="WOu-Ih-Zjx"/>
+                            <constraint firstItem="o6B-jz-FGx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XRA-Qm-Ytj"/>
                             <constraint firstItem="yNJ-gR-1Um" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cxT-ko-rIK"/>
-                            <constraint firstItem="o6B-jz-FGx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lP2-NU-t0o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -63,7 +63,6 @@
                         <outlet property="containerView" destination="o6B-jz-FGx" id="Kbo-qJ-LJd"/>
                         <outlet property="leadingContainerConstraint" destination="FrN-DT-EPK" id="3XM-0U-LN7"/>
                         <outlet property="tableView" destination="yNJ-gR-1Um" id="9AO-Vq-n6K"/>
-                        <outlet property="topContainerConstraint" destination="lP2-NU-t0o" id="xFz-Ee-lWt"/>
                         <outlet property="trailingContainerConstraint" destination="WOu-Ih-Zjx" id="3OH-gZ-IAK"/>
                     </connections>
                 </viewController>
