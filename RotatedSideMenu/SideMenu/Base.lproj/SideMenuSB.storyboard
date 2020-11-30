@@ -76,7 +76,7 @@
                 <viewControllerPlaceholder storyboardName="HomeSB" id="UHu-jd-Pv3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ws3-6n-UcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="117"/>
+            <point key="canvasLocation" x="771" y="139"/>
         </scene>
     </scenes>
     <resources>

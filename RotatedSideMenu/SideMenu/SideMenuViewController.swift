@@ -11,6 +11,9 @@ import UIKit
 class SideMenuViewController: UIViewController {
     //MARK:-Declarations
     var menuStatus = MenuStatus.closed
+    var menuDirection = MenuOpeningDirection.left
+    var animationSpeed = 0.5
+    var menuAppearance = MenuAppearance.rotatedAppearance(angle: 10)
     var tapGestureRecognizer: UITapGestureRecognizer?
     var panGestureRecognizer: UIPanGestureRecognizer?
     //MARK:-Outlets
@@ -48,22 +51,55 @@ class SideMenuViewController: UIViewController {
         }
     }
     private func openMenu(){
+        switch menuDirection {
+        case .right:
+            openRightMenu()
+        case .left:
+            openLeftMenu()
+        }
+      
+    }
+    private func openLeftMenu() {
         let value = view.frame.width - 150
         leadingContainerConstraint.constant = value
         trailingContainerConstraint.constant = -value
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: animationSpeed) {
             self.view.layoutIfNeeded()
             self.containerView.layer.cornerRadius = 40
             self.containerView.layer.masksToBounds = true
-            self.rotate(angle: -10)
+//            self.rotate(angle: -10)
+            switch self.menuAppearance {
+            case .defaultAppearance:
+                return
+            case .rotatedAppearance(let angle):
+                self.rotate(angle: -angle)
+            }
+        }
+    }
+    private func openRightMenu() {
+        let value = view.frame.width - 150
+        leadingContainerConstraint.constant = -value
+        trailingContainerConstraint.constant = value
+        
+        UIView.animate(withDuration: animationSpeed) {
+            self.view.layoutIfNeeded()
+            self.containerView.layer.cornerRadius = 40
+            self.containerView.layer.masksToBounds = true
+//            self.rotate(angle: 10)
+            switch self.menuAppearance {
+            case .defaultAppearance:
+                return
+            case .rotatedAppearance(let angle):
+                self.rotate(angle: angle)
+            }
         }
     }
     private func closeMenu(){
         leadingContainerConstraint.constant = 0
         trailingContainerConstraint.constant = 0
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: animationSpeed, animations: {
             self.view.layoutIfNeeded()
             self.containerView.layer.cornerRadius = 0
             self.setContainerToOriginalPosition()
@@ -89,6 +125,14 @@ class SideMenuViewController: UIViewController {
 enum MenuStatus {
     case opened
     case closed
+}
+enum MenuOpeningDirection {
+    case right
+    case left
+}
+enum MenuAppearance {
+    case rotatedAppearance(angle:CGFloat)
+    case defaultAppearance
 }
 //MARK:-Extensions
 extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource{
